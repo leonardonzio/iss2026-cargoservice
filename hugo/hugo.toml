@@ -1,4 +1,4 @@
-baseURL        = "http://localhost:1313/"
+baseURL        = "https://leonardonzio.github.io/iss2026-cargoservice/"
 title          = "ISS 2026 - Cargo Service"
 locale         = "it-IT"
 theme          = "chicago7"
@@ -22,16 +22,16 @@ posts = "/posts/:year:month:day"
     ordered    = false
 
 # Navigation menu
-#[menu]
-#[[menu.header]]
-#name   = "Sprint0"
-#url    = "sprint0"
-#weight = 10
-#
-#[[menu.header]]
-#name   = "Sprint1"
-#url    = "sprint1"
-#weight = 20
+[menu]
+[[menu.header]]
+name   = "Sprint0"
+url    = "sprint0"
+weight = 10
+
+[[menu.header]]
+name   = "Sprint1"
+url    = "sprint1"
+weight = 20
 
 # Site parameters
 [params]
