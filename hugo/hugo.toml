@@ -35,28 +35,14 @@ weight = 20
 
 # Site parameters
 [params]
-# Relative path to logo inside static/
-logo = "logo.svg"
-
-# Author shown in footer copyright
+logo = "logo.svg" # relative patwh inside static/
 author = "Leonardo Barone, Leonardo Ciacco"
-
-# Shown in meta description on the home page
 subtitle = "Ingegneria dei Sistemi Software 2026 - Cargo Service"
+missingContentMessage = "Pagina non trovata." # 404
+math = true # default every page have katex
 
-# SEO keywords (fallback when a page has none)
-keywords = "ISS, cargo service, sistemi software, unibo"
-
-# Custom 404 message
-missingContentMessage = "Pagina non trovata."
-
-# Set to true to enable KaTeX math rendering on every page.
-# Set to false (or omit) to enable it only on pages with `math = true` in front matter.
-math = true
-
-# Social links shown in the footer (remove lines you don't want)
 [params.social]
-github = "https://github.com/"
+github = "https://github.com/leonardonzio/iss2026-cargoservice/"
 
 [caches]
   [caches.images]
