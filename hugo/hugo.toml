@@ -57,3 +57,7 @@ math = true
 # Social links shown in the footer (remove lines you don't want)
 [params.social]
 github = "https://github.com/"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
