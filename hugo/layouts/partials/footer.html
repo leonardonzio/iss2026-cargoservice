@@ -1,38 +1,125 @@
 <footer class="footer">
-    {{ $icons := dict
-      "github" "github.svg"
-      "goodreads" "goodreads.svg"
-      "behance" "behance.svg"
-      "dribbble" "dribbble.svg"
-      "facebook" "facebook.svg"
-      "feed" "feed.svg"
-      "gplus" "gplus.svg"
-      "instagram" "instagram.svg"
-      "linkedin" "linkedin.svg"
-      "pinterest" "pinterest.svg"
-      "soundcloud" "soundcloud.svg"
-      "vimeo" "vimeo.svg"
-      "twitter" "twitter.svg"
-      "youtube" "youtube.svg"
-    }}
-    {{ with site.Params.social }}
-    <nav class="social">
-    <ul>
-    {{ range $key, $icon := $icons }}
-    {{ $url := index site.Params.social $key }}
-      {{ with $url }}
-        <li>
-          <a href="{{ . }}" target="_blank" rel="noopener noreferrer">
-            {{ $svgPath := printf "static/icons/%s" $icon }}
-            {{ readFile $svgPath | safeHTML }}
-          </a>
-        </li>
+
+  {{/* Author cards — sourced from [[params.authors]] in hugo.toml */}}
+  <div class="footer-authors">
+    {{ range site.Params.authors }}
+    <div class="footer-author-card">
+      {{ if .img }}
+      <img src="{{ .img | relURL }}" alt="{{ .name }}" class="footer-author-img">
+      {{ else }}
+      {{/* Fallback: initials circle */}}
+      {{ $initials := "" }}
+      {{ $parts := split .name " " }}
+      {{ range $parts }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}
+      <div class="footer-author-initials">{{ $initials }}</div>
       {{ end }}
+      <div class="footer-author-info">
+        <span class="footer-author-name">{{ .name }}</span>
+        {{ if .email }}
+        <a href="mailto:{{ .email }}" class="footer-author-email">{{ .email }}</a>
+        {{ end }}
+      </div>
+    </div>
     {{ end }}
+  </div>
+
+  {{/* Social icons */}}
+  {{ $icons := dict
+  "github" "github.svg"
+  "goodreads" "goodreads.svg"
+  "behance" "behance.svg"
+  "dribbble" "dribbble.svg"
+  "facebook" "facebook.svg"
+  "feed" "feed.svg"
+  "gplus" "gplus.svg"
+  "instagram" "instagram.svg"
+  "linkedin" "linkedin.svg"
+  "pinterest" "pinterest.svg"
+  "soundcloud" "soundcloud.svg"
+  "vimeo" "vimeo.svg"
+  "twitter" "twitter.svg"
+  "youtube" "youtube.svg"
+  }}
+  {{ with site.Params.social }}
+  <nav class="social">
+    <ul>
+      {{ range $key, $icon := $icons }}
+      {{ $url := index site.Params.social $key }}
+      {{ with $url }}
+      <li>
+        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          {{ $svgPath := printf "static/icons/%s" $icon }}
+          {{ readFile $svgPath | safeHTML }}
+        </a>
+      </li>
+      {{ end }}
+      {{ end }}
     </ul>
-    </nav>
-    {{ end }}
-    <p>
-        &copy; {{ now.Year }} {{ .Site.Params.author }}
-    </p>
+  </nav>
+  {{ end }}
+
+  <p>&copy; {{ now.Year }}</p>
+
 </footer>
+
+<style>
+  .footer-authors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0 0.75rem;
+  }
+
+  .footer-author-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-author-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--pico-primary, currentColor);
+  }
+
+  .footer-author-initials {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--pico-primary, currentColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--pico-font-family-header, monospace);
+    font-size: 0.65rem;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .footer-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    text-align: left;
+  }
+
+  .footer-author-name {
+    font-family: var(--pico-font-family-header, monospace);
+    font-size: 0.72rem;
+    font-weight: bold;
+  }
+
+  .footer-author-email {
+    font-size: 0.65rem;
+    color: var(--pico-muted-color, #888);
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .footer-author-email:hover {
+    text-decoration: underline;
+  }
+</style>

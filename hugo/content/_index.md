@@ -2,10 +2,6 @@
 title = "ISS 2026 - Cargo Service"
 +++
 
-made by  
-- **Leonardo Barone**
-- **Leonardo Ciacco**
-
 ---
 
 <div style="text-align:center; list-style:none;">

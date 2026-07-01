@@ -21,25 +21,28 @@ posts = "/posts/:year:month:day"
     endLevel   = 4
     ordered    = false
 
-# Navigation menu
-[menu]
-[[menu.header]]
-name   = "Sprint0"
-url    = "sprint0"
-weight = 10
 
-[[menu.header]]
-name   = "Sprint1"
-url    = "sprint1"
-weight = 20
-
-# Site parameters
 [params]
-logo = "emojimarines.png" # relative patwh inside static/
-author = "Leonardo Barone, Leonardo Ciacco"
 subtitle = "Ingegneria dei Sistemi Software 2026 - Cargo Service"
 missingContentMessage = "Pagina non trovata." # 404
 math = true # default every page have katex
+logo = "emojimarines.png" # relative path inside static/
+
+[[params.authors]]
+name  = "Leonardo Barone"
+email = "leonardo.barone3@studio.unibo.it"
+img   = "cargoemoji.jpg"   # relative to static/
+
+[[params.authors]]
+name  = "Leonardo Ciacco"
+email = "leonardo.ciacco@studio.unibo.it"
+img   = "cargoemoji2.jpg"
+
+[[params.authors]]
+name  = "Andrei Cezar Radu"
+email = "andrei.radu@studio.unibo.it"
+img   = "cargoship.jpeg"
+
 
 [params.social]
 github = "https://github.com/leonardonzio/iss2026-cargoservice/"
